@@ -82,9 +82,9 @@ public class HomeController {
 
             if (sid.equals(Song.getId())) {
                 model.addAttribute("songs", (Song));
-
+                return "songsid";
             }
-            return "songsid";
+
         }
         return "notFound";
     }
