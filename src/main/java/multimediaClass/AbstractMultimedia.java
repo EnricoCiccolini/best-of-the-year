@@ -18,7 +18,7 @@ public abstract class AbstractMultimedia {
         return this.titolo;
     }
 
-    public String getid() {
+    public String getId() {
         return this.id;
     }
 

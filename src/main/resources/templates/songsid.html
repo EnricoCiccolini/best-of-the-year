@@ -4,11 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.3/css/bootstrap.min.css}" />
     <title>Document</title>
 </head>
 
+<th:block th:replace="~{fragment :: navbar}">
+
+</th:block>
+
 <body>
-    <h1 th:text=" 'the besty songs is' + ${songs.getTitolo} "> </h1>
+    <h1 th:text=" 'the besty songs is ' + ${songs.getTitolo} "> </h1>
 
 </body>
 

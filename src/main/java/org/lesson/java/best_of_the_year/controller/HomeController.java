@@ -47,6 +47,7 @@ public class HomeController {
     @RequestMapping("movies")
     public String Movie(Model model) {
         model.addAttribute("movies", getBestMovies(movies));
+        model.addAttribute("media", movies);
 
         return "movies";
     }
@@ -54,36 +55,38 @@ public class HomeController {
     @RequestMapping("songs")
     public String Song(Model model) {
         model.addAttribute("songs", getBestSongs(songs));
+        model.addAttribute("media", songs);
 
         return "songs";
     }
 
     @RequestMapping("movies/{id}")
     public String Movieid(Model model, @PathVariable("id") String mid) {
-
+        model.addAttribute("id", mid);
         for (Movie movie : movies) {
 
-            if (mid.equals(movie.getid())) {
+            if (mid.equals(movie.getId())) {
                 model.addAttribute("movies", (movie));
+                return "moviesid";
             }
 
         }
 
-        return "moviesid";
+        return "notFound";
     }
 
     @RequestMapping("songs/{id}")
     public String Songsid(Model model, @PathVariable("id") String sid) {
-
+        model.addAttribute("id", sid);
         for (Song Song : songs) {
 
-            if (sid.equals(Song.getid())) {
+            if (sid.equals(Song.getId())) {
                 model.addAttribute("songs", (Song));
+
             }
-
+            return "songsid";
         }
-
-        return "songsid";
+        return "notFound";
     }
 
 }
