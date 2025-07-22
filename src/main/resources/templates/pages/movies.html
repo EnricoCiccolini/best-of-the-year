@@ -8,25 +8,27 @@
     <title>Document</title>
 </head>
 
-<th:block th:replace="~{fragment :: navbar}">
+<th:block th:replace="~{fragments/fragment :: navbar}">
 
 </th:block>
 
 <body>
+    <h1 th:text=" 'the besty movies is' "> </h1>
 
-    <th:block th:each="song : ${media}">
+    <th:block th:each="movie : ${media}">
 
 
         <div class="card" style="width: 18rem;">
             <div class="card-body">
-                <h5 class="card-title" th:text="${song.titolo}"></h5>
-                <p class="card-text" th:text="${'writen by' + song.author}"></p>
-                <a th:href="${'http://localhost:8080/songs/'+ song.id }" class="card-link">Card link</a>
+                <h5 class="card-title" th:text="${movie.titolo}"></h5>
+                <p class="card-text" th:text="${'Director by' + movie.director}"></p>
+                <a th:href="${'http://localhost:8080/movies/'+ movie.id }" class="card-link">Card link</a>
 
             </div>
         </div>
 
     </th:block>
+
 
 </body>
 

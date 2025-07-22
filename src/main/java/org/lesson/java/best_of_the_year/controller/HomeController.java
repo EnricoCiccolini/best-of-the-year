@@ -12,13 +12,14 @@ import multimediaClass.Song;
 @RequestMapping("/")
 
 public class HomeController {
-    Movie Matrix = new Movie("Matrix", "1", "Wachowsky");
-    Song Sultan = new Song("Sultan of swing", "2", "Dire Straits");
-    Movie TheLordOfTheRing = new Movie("The lord of the rings ", "3", "Jackson");
-    Song RomeoAndJuliet = new Song("Romeo and juliet", "4", "Dire Straits");
 
-    Movie[] movies = { Matrix, TheLordOfTheRing };
-    Song[] songs = { Sultan, RomeoAndJuliet };
+    private Movie Matrix = new Movie("Matrix", "1", "Wachowsky");
+    private Song Sultan = new Song("Sultan of swing", "2", "Dire Straits");
+    private Movie TheLordOfTheRing = new Movie("The lord of the rings ", "3", "Jackson");
+    private Song RomeoAndJuliet = new Song("Romeo and juliet", "4", "Dire Straits");
+
+    private Movie[] movies = { Matrix, TheLordOfTheRing };
+    private Song[] songs = { Sultan, RomeoAndJuliet };
 
     // metodi
     private String getBestMovies(Movie[] movies) {
@@ -41,7 +42,7 @@ public class HomeController {
     public String Home(Model model) {
         model.addAttribute("name", "Enrico");
 
-        return "home";
+        return "pages/home";
     }
 
     @RequestMapping("movies")
@@ -49,7 +50,7 @@ public class HomeController {
         model.addAttribute("movies", getBestMovies(movies));
         model.addAttribute("media", movies);
 
-        return "movies";
+        return "pages/movies";
     }
 
     @RequestMapping("songs")
@@ -57,36 +58,36 @@ public class HomeController {
         model.addAttribute("songs", getBestSongs(songs));
         model.addAttribute("media", songs);
 
-        return "songs";
+        return "pages/songs";
     }
 
     @RequestMapping("movies/{id}")
-    public String Movieid(Model model, @PathVariable("id") String mid) {
-        model.addAttribute("id", mid);
+    public String Movieid(Model model, @PathVariable("id") String movieId) {
+        model.addAttribute("id", movieId);
         for (Movie movie : movies) {
 
-            if (mid.equals(movie.getId())) {
+            if (movieId.equals(movie.getId())) {
                 model.addAttribute("movies", (movie));
-                return "moviesid";
+                return "pages/single-film";
             }
 
         }
 
-        return "notFound";
+        return "pages/notFound";
     }
 
     @RequestMapping("songs/{id}")
-    public String Songsid(Model model, @PathVariable("id") String sid) {
-        model.addAttribute("id", sid);
-        for (Song Song : songs) {
+    public String Songsid(Model model, @PathVariable("id") String songId) {
+        model.addAttribute("id", songId);
+        for (Song song : songs) {
 
-            if (sid.equals(Song.getId())) {
-                model.addAttribute("songs", (Song));
-                return "songsid";
+            if (songId.equals(song.getId())) {
+                model.addAttribute("songs", (song));
+                return "pages/single-song";
             }
 
         }
-        return "notFound";
+        return "pages/not-found";
     }
 
 }

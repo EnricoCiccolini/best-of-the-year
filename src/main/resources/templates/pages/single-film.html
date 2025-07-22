@@ -7,13 +7,12 @@
     <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.3/css/bootstrap.min.css}" />
     <title>Document</title>
 </head>
-
-<th:block th:replace="~{fragment :: navbar}">
+<th:block th:replace="~{fragments/fragment :: navbar}">
 
 </th:block>
 
 <body>
-    <h1 th:text=" 'not found element whit id ' + ${id} "> </h1>
+    <h1 th:text=" 'the besty movies is ' + ${movies.getTitolo} "> </h1>
 
 </body>
 
